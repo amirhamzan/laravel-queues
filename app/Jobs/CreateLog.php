@@ -8,6 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class CreateLog implements ShouldQueue
 {
@@ -30,6 +32,8 @@ class CreateLog implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $current = Carbon::now();
+
+        Log::info("Create log using job " . $current->toDateTimeString());
     }
 }

@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+use App\Jobs\CreateLog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-
 
 class HomeController extends Controller
 {
     public function index()
     {
-        dump(true);
-
-        $current = Carbon::now();
-
-        Log::info("Create log " . $current->toDateTimeString());
-
+        CreateLog::dispatch()->delay(now()->addSeconds(15));
+        
         return view('welcome');
     }
 }
