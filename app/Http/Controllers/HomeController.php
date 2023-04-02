@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         $current = Carbon::now();
 
-        Log::info("Add log " . $current->toDateTimeString());
+        Log::info("Create log " . $current->toDateTimeString());
 
         return view('welcome');
     }
